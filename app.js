@@ -11,6 +11,7 @@ const app = express();
 
 
 app.use(express.json());
+// to read json data in req body using express
 
 // Routes
 app.use('/api/auth', authRoutes);
