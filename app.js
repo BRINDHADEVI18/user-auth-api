@@ -5,6 +5,7 @@ const userRoutes = require('./routes/userRoutes');
 
 
 dotenv.config();
+// configuring env variables 
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+// process is a global obj
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
