@@ -1,7 +1,7 @@
 # User Auth API
 
-A production-ready REST API built with 
-Node.js and PostgreSQL.
+A REST API built with 
+Node.js and PostgreSQL for user authentication and retrieve users 
 
 ## Features
 - User Registration & Login
