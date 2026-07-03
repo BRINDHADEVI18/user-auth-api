@@ -1,5 +1,7 @@
 const pool = require('../config/db');
 
+// User table is already created in the db
+// we are creating new user 
 const User = {
 
   // Create new user
