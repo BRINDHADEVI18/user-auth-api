@@ -24,6 +24,8 @@ const register = async (req, res) => {
     }
 
     // 3. Hash the password
+     // Salt random string added to password         
+     // hashing rounds irreversible hashes
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
