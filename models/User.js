@@ -38,7 +38,7 @@ const User = {
   // Get all users
   findAll: async () => {
     const result = await pool.query(
-      `SELECT id, name, email, created_at 
+      `SELECT id, name, email, created_at, role
        FROM users`
     );
     return result.rows;
