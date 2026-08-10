@@ -8,10 +8,10 @@ const User = {
   create: async (name, email, password) => {
     const result = await pool.query(
       `INSERT INTO users 
-       (name, email, password) 
-       VALUES ($1, $2, $3) 
+       (name, email, password,role) 
+       VALUES ($1, $2, $3, $4) 
        RETURNING *`,
-      [name, email, password]
+      [name, email, password, 'user']
     );
     return result.rows[0];
   },
