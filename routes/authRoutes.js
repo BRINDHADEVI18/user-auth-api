@@ -2,7 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { register, login } = require('../controllers/authController');
 
+const rateLimit = require('express-rate-limit');
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // max 5 attempts per IP in that window
+  message: { message: 'Too many login attempts, please try again later' }
+});
+
+
 router.post('/register', register);
-router.post('/login', login);
+router.post('/login', loginLimiter, login);
 
 module.exports = router;
