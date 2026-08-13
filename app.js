@@ -3,7 +3,7 @@ const path = require('path');
 
 const dotenv = require('dotenv');
 const helmet = require('helmet');
-app.use(express.static(path.join(__dirname, 'frontend')));
+
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 
@@ -16,7 +16,7 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(express.json());
 // to read json data in req body using express
-
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(helmet());
 //for secure HTTP headers across all routes
 
