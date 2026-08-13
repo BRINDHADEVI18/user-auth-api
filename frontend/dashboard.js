@@ -21,6 +21,8 @@ async function loadProfile() {
       window.location.href = 'index.html';
       return;
     }
+    
+    
 
     const data = await res.json();
     document.getElementById('profile').innerHTML = `
@@ -28,6 +30,10 @@ async function loadProfile() {
       <p><strong>Email:</strong> ${data.email}</p>
       <p><strong>Role:</strong> ${data.role}</p>
     `;
+
+    if (data.role === 'admin')  {                                                                              document.getElementById('allUsersSection').style.display = 'block';
+    loadAllUsers();
+  }
   } catch (err) {
     document.getElementById('message').textContent = 'Could not reach the server';
   }
@@ -37,5 +43,16 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
   localStorage.removeItem('token');
   window.location.href = 'index.html';
 });
+
+
+async function loadAllUsers() {
+  const res = await fetch(`${API_URL}/users`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+  const users = await res.json();
+  document.getElementById('userList').innerHTML = users
+    .map(u => `<p>${u.name} — ${u.email} (${u.role})</p>`)
+    .join('');
+}
 
 loadProfile();
