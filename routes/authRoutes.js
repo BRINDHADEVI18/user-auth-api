@@ -4,7 +4,7 @@ const { register, login } = require('../controllers/authController');
 const validateRequest = require('../middleware/validate);
 
 const rateLimit = require('express-rate-limit');
-const { body } = require( 'express-validator);
+const { body } = require('express-validator');
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
