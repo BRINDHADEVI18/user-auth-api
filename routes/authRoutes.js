@@ -15,7 +15,7 @@ const loginLimiter = rateLimit({
 
 //router.post('/register', register);
 
-router.post('/register', [body('email').isEmail(), body('password').isLength({ min: 6 })], validateRequest, register);
+router.post('/register', [body('name').trim().notEmpty().withMessage('Name is required'),body('email').isEmail(), body('password').isLength({ min: 6 })], validateRequest, register);
 // router.post('/login', loginLimiter, login);
 
 router.post(
