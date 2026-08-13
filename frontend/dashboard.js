@@ -31,7 +31,7 @@ async function loadProfile() {
       <p><strong>Role:</strong> ${data.role}</p>
     `;
 
-    if (data.role === 'admin')  {                                                                              document.getElementById('allUsersSection').style.display = 'block';
+    if (data.role.trim() === 'admin')  {                                                                              document.getElementById('allUsersSection').style.display = 'block';
     loadAllUsers();
   }
   } catch (err) {
