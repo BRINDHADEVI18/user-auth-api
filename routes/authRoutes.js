@@ -3,6 +3,7 @@ const router = express.Router();
 const { register, login } = require('../controllers/authController');
 
 const rateLimit = require('express-rate-limit');
+const { body } = require( 'express-validator);
 
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -11,7 +12,9 @@ const loginLimiter = rateLimit({
 });
 
 
-router.post('/register', register);
+//router.post('/register', register);
+
+router.post('/register', [body('email').isEmail(), body('password').isLength({ min: 6 })], validateRequest, authController.register);
 // router.post('/login', loginLimiter, login);
 
 router.post(
