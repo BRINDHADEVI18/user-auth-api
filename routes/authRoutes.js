@@ -12,6 +12,10 @@ const loginLimiter = rateLimit({
 
 
 router.post('/register', register);
-router.post('/login', loginLimiter, login);
+// router.post('/login', loginLimiter, login);
+
+router.post(
+  '/login',
+  loginLimiter, [ body('email').isEmail().withMessage('Valid email required'), body('password').notEmpty().withMessage('Password is required'),], validateRequest,authController.login);
 
 module.exports = router;
