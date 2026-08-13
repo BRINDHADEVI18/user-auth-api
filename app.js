@@ -1,7 +1,9 @@
 const express = require('express');
+const path = require('path');
+
 const dotenv = require('dotenv');
 const helmet = require('helmet');
-
+app.use(express.static(path.join(__dirname, 'frontend')));
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 
