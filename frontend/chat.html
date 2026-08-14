@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Chat Room</h2>
+      <div id="chatBox" style="height:300px; overflow-y:auto; border:1px solid #ddd; padding:10px; margin-bottom:10px;"></div>
+      <form id="chatForm">
+        <input type="text" id="chatInput" placeholder="Type a message..." required>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
