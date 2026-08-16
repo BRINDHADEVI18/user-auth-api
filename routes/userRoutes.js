@@ -11,7 +11,7 @@ const {
 } = require('../controllers/userController');
 
 router.get('/profile', protect, getProfile);
-router.get('/', protect,authorizeRoles('admin'),  getAllUsers);
+router.get('/all', protect,authorizeRoles('admin'),  getAllUsers);
 router.get('/me',protect,getMe);
 router.put('/:id', protect, updateUser);
 router.delete('/:id', protect,authorizeRoles('admin'), deleteUser);
