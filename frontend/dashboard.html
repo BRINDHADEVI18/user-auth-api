@@ -6,24 +6,47 @@
   <title>Dashboard | Auth App</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>eruda.init();</script>
 <body>
-
   <div class="container">
     <div class="card">
-      <h2>Welcome</h2>
-      <div id="profile">Loading...</div>
-       <a href="chat.html"><button type="button">Go to Chat Room</button></a>
-      <button id="logoutBtn">Logout</button>
+      <div class="tabs">
+        <button class="tabBtn active" data-tab="profileTab">Profile</button>
+        <button class="tabBtn" data-tab="chatTab">Chat</button>
+        <button class="tabBtn" id="usersTabBtn" data-tab="usersTab" style="display:none;">Users</button>
+        <button id="logoutBtn">Logout</button>
+      </div>
+
+      <!-- Profile tab -->
+      <div id="profileTab" class="tabContent">
+        <div id="profile">Loading...</div>
+
+        <h3>Update Profile</h3>
+        <form id="updateProfileForm">
+          <input type="text" id="updateName" placeholder="Name">
+          <input type="email" id="updateEmail" placeholder="Email">
+          <button type="submit">Update</button>
+        </form>
+      </div>
+
+      <!-- Chat tab -->
+      <div id="chatTab" class="tabContent" style="display:none;">
+        <div id="chatBox" style="height:300px; overflow-y:auto; border:1px solid #ddd; padding:10px;"></div>
+        <form id="chatForm">
+          <input type="text" id="chatInput" placeholder="Type a message..." required>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+      <!-- Users tab (admin only) -->
+      <div id="usersTab" class="tabContent" style="display:none;">
+        <div id="userList"></div>
+      </div>
+
+      <p id="message"></p>
     </div>
-    <div class="card" id="allUsersSection"        style="display:none;">
-       <h2>All Users</h2>
-       <div id="userList"></div>
-    </div>
-    <p id="message"></p>
   </div>
 
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script src="dashboard.js"></script>
 </body>
 </html>
