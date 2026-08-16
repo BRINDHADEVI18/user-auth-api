@@ -13,7 +13,7 @@ const getProfile = async (req, res) => {
   }
 };
 
-// @route  GET /api/users
+// @route  GET /api/users/all
 // @access Private
 const getAllUsers = async (req, res) => {
   try {
