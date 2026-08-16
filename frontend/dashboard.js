@@ -49,7 +49,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 
 
 async function loadAllUsers() {
-  const res = await fetch(`${API_URL}/users`, {
+  const res = await fetch(`${API_URL}/users/all`, {
     headers: { Authorization: `Bearer ${token}` }
   });
   const users = await res.json();
