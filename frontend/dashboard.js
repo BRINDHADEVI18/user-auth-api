@@ -21,7 +21,7 @@ document.querySelectorAll('.tabBtn[data-tab]').forEach(btn => {
 // ---- Profile ----
 async function loadProfile() {
   try {
-    const res = await fetch(`${API_URL}/users/me`, {
+    const res = await fetch(`${API_URL}/users/:id`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) {
