@@ -3,7 +3,7 @@
 const API_URL = '/api';
 
 
-const CHAT_API_URL = 'https://your-chat-api.onrender.com'; // your chat-api Render URL
+const CHAT_API_URL = 'https://chatroom-api-nebl.onrender.com'; //  chat-api Render URL
 const token = localStorage.getItem('token');
 
 if (!token) window.location.href = 'index.html';
