@@ -116,6 +116,8 @@ async function loadHistory() {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+try{
+
 const socket = io(CHAT_API_URL, { auth: { token } });
 socket.on('connect_error', (err) => console.error('Chat connect error:', err.message));
 socket.on('receiveMessage', (msg) => {
@@ -133,6 +135,10 @@ document.getElementById('chatForm').addEventListener('submit', (e) => {
     input.value = '';
   }
 });
+}
+catch (err){
+    console.error('Socket.IO failed to initialize:', err.message);
+}
 
 // ---- Init ----
 loadProfile();
