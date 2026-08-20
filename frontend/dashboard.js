@@ -30,7 +30,7 @@ async function loadProfile() {
 
   try {
     
-const userId = getUserIdFromToken(token);
+
 
     const res = await fetch(`${API_URL}/users/me`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -64,7 +64,9 @@ document.getElementById('updateProfileForm').addEventListener('submit', async (e
   const name = document.getElementById('updateName').value;
   const email = document.getElementById('updateEmail').value;
 
-  const res = await fetch(`${API_URL}/users/me`, {
+const userId = getUserIdFromToken(token);
+
+  const res = await fetch(`${API_URL}/users/${userId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify({ name, email })
