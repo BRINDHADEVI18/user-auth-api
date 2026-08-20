@@ -18,9 +18,7 @@ document.querySelectorAll('.tabBtn[data-tab]').forEach(btn => {
   });
 });
 
-
-
-async function getUserIdFromToken(token) {
+function getUserIdFromToken(token) {
   const payload = JSON.parse(atob(token.split('.')[1]));
   return payload.id; // or payload.userId — depends on what you signed into the JWT
 }
