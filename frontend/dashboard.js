@@ -18,17 +18,22 @@ document.querySelectorAll('.tabBtn[data-tab]').forEach(btn => {
   });
 });
 
-// ---- Profile ----
-async function loadProfile() {
 
-  function getUserIdFromToken(token) {
+
+async function getUserIdFromToken(token) {
   const payload = JSON.parse(atob(token.split('.')[1]));
   return payload.id; // or payload.userId — depends on what you signed into the JWT
 }
 
-const userId = getUserIdFromToken(token);
+// ---- Profile ----
+async function loadProfile() {
+
+  
 
   try {
+    
+const userId = getUserIdFromToken(token);
+
     const res = await fetch(`${API_URL}/users/${userId}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
