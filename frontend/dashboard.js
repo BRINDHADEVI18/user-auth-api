@@ -20,8 +20,16 @@ document.querySelectorAll('.tabBtn[data-tab]').forEach(btn => {
 
 // ---- Profile ----
 async function loadProfile() {
+
+  function getUserIdFromToken(token) {
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  return payload.id; // or payload.userId — depends on what you signed into the JWT
+}
+
+const userId = getUserIdFromToken(token);
+
   try {
-    const res = await fetch(`${API_URL}/users/:id`, {
+    const res = await fetch(`${API_URL}/users/${userId}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) {
