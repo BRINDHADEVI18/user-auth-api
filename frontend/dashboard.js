@@ -32,7 +32,7 @@ async function loadProfile() {
     
 const userId = getUserIdFromToken(token);
 
-    const res = await fetch(`${API_URL}/users/${userId}`, {
+    const res = await fetch(`${API_URL}/users/me`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     if (!res.ok) {
